@@ -155,7 +155,7 @@ class Game
       puts "~~~Six cards! #{player_check.name} wins!~~~" ; player_check.score += 1
       show_hands_final
       again?
-    end
+    end 
   end
 
   #The dealer's choices for a single game
