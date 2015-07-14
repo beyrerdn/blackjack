@@ -100,7 +100,7 @@ class Game
         if response == "1"
           card.value = 1
           player_hit.hand << card
-        elsif response == "11"
+        else response == "11"
           card.value = 11
           player_hit.hand << card
         end
@@ -171,20 +171,20 @@ class Game
   def win?(player_check)
     other = ""
     player_check == player ? other = dealer : other = player
-    if (player_check == player)&&(player_check.hand_total == other.hand_total)
+    if (player_check == player) && (player_check.hand_total == other.hand_total)
       return "Tie"
     elsif (player_check.bust == false) && (other.bust == false) && (player_check.hand_total > other.hand_total)
       return true
     elsif (player_check.hand_total == 21)
       return true
-    elsif (player_check.bust == false) && (other.bust == false)&&(player_check.hand_total < other.hand_total)
+    elsif (player_check.bust == false) && (other.bust == false) && (player_check.hand_total < other.hand_total)
       return false
     elsif (player_check.bust == false) && (other.bust == true)
       return true
     elsif (player_check.bust == true) && (other.bust == false)
       return false
-    elsif (player_check.bust = true) && (other.bust == true)
-      return "Bust"
+    # elsif (player_check.bust = true) && (other.bust == true)
+    #   return "Bust"
     end
   end #End win?
 
@@ -196,9 +196,9 @@ class Game
     elsif (win?(dealer) == true) && (win?(player) == false)
       show_hands_final
       puts "#{dealer.name} wins!!!\n" ;dealer.score += 1
-    elsif (win?(player) == "Bust") || (win?(dealer) == "Bust")
-      show_hands_final
-      puts "#{player.name} and #{dealer.name} busted. It's a tie!\n"
+    # elsif (win?(player) == "Bust") || (win?(dealer) == "Bust")
+    #   show_hands_final
+    #   puts "#{player.name} and #{dealer.name} busted. It's a tie!\n"
     elsif win?(player) == "Tie"
       show_hands_final
       if player.hand_count > dealer.hand_count
